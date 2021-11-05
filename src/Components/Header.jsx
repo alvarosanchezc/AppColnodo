@@ -13,19 +13,7 @@ class Header extends React.Component {
       <React.Fragment>
         <header class="main-header">
           <div class="container--flex">
-            <div class="logo-container column column--50">
-              <h1 class="logo">Italian Food</h1>
-            </div>
-            <div class="main-header__contactInfo column column--50">
-              <p class="main-header__contactInfo__phone">
-                <span class="icon-phone">6893457</span>
-              </p>
-              <p class="main-header__contactInfo__address">
-                <span class="icon-map">
-                  Carrera 156 #135-24 Bogota,Colombia
-                </span>
-              </p>
-            </div>
+            <div class="main-header__contactInfo column column--50"></div>
           </div>
         </header>
         <nav class="main-nav">
