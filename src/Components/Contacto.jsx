@@ -2,14 +2,65 @@ import React from "react";
 import "./Styles/contacto.css";
 import "./Styles/estilos.css";
 import "./Styles/font.css";
+import axios from "axios";
 
 class Contacto extends React.Component {
+  asunto = React.createRef();
+  nombre = React.createRef();
+  correo = React.createRef();
+  servicio = React.createRef();
+  pedido = React.createRef();
+
+  state = {
+    asunto: "",
+    nombre: "",
+    correo: "",
+    servicio: "",
+    pedido: "",
+  };
+
+  comprobarCambios = () => {
+    var asunto = this.asunto.current.value;
+    var mensaje = this.mensaje.current.value;
+    var correo = this.correo.current.value;
+    var tipoServicio = this.servicio.current.value;
+    var pedidoEspecial = this.pedido.current.value;
+    this.setState({
+      asunto: asunto,
+      mensaje: mensaje,
+      correo: correo,
+      servicio: tipoServicio,
+      pedido: pedidoEspecial,
+    });
+  };
+
+  constructor() {
+    super();
+    this.enviarEmail = this.enviarEmail.bind(this);
+  }
+
+  async enviarEmail(e) {
+    e.preventDefault();
+    const { asunto, nombre, correo, tipoServicio, pedidoEspecial } = this.state;
+    const form = await axios.post("/api/form", {
+      asunto,
+      nombre,
+      correo,
+      tipoServicio,
+      pedidoEspecial,
+    });
+  }
+
   render() {
     return (
       <React.Fragment>
         <div class="row">
           <center>
-            <form action="send.js" class="was-validated col-md-4" method="post">
+            <form
+              action="send.js"
+              class="was-validated col-md-4"
+              onSubmit={this.enviarEmail}
+            >
               <div class="col-md-12">
                 <label for="validationDefault03" class="form-label">
                   Asunto
@@ -18,6 +69,8 @@ class Contacto extends React.Component {
                   type="text"
                   name="asunto"
                   class="form-control"
+                  onChange={this.comprobarCambios}
+                  ref={this.asunto}
                   id="validationDefault03"
                   required
                 />
@@ -32,6 +85,8 @@ class Contacto extends React.Component {
                   type="text"
                   name="nombre"
                   class="form-control is-valid"
+                  onChange={this.comprobarCambios}
+                  ref={this.nombre}
                   id="validationServer01"
                   required
                 />
@@ -47,6 +102,8 @@ class Contacto extends React.Component {
                   name="correo"
                   class="form-control"
                   id="exampleFormControlInput1"
+                  onChange={this.comprobarCambios}
+                  ref={this.correo}
                   placeholder="correo@example.com"
                   required
                 />
@@ -56,6 +113,8 @@ class Contacto extends React.Component {
                 <select
                   class="form-select"
                   name="servicio"
+                  onChange={this.comprobarCambios}
+                  ref={this.tipoServicio}
                   required
                   aria-label="select example"
                 >
@@ -94,6 +153,8 @@ class Contacto extends React.Component {
                 <input
                   type="checkbox"
                   class="form-check-input"
+                  onChange={this.comprobarCambios}
+                  ref={this.pedidoEspecial}
                   id="validationFormCheck1"
                   required
                 />

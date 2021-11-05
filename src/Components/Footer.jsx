@@ -1,4 +1,4 @@
-import React from "react";
+import React, { Component } from "react";
 import "./Styles/Services.css";
 
 class Footer extends React.Component {

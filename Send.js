@@ -4,21 +4,33 @@ class SendMail extends Component {
   email = React.createRef();
   asunto = React.createRef();
   mensaje = React.createRef();
+  correo = React.createRef();
+  servicio = React.createRef();
+  pedido = React.createRef();
 
   state = {
     email: "",
     asunto: "",
     mensaje: "",
+    correo: "",
+    servicio: "",
+    pedido: "",
   };
 
   comprobarCambios = () => {
     var email = this.email.current.value;
     var asunto = this.asunto.current.value;
     var mensaje = this.mensaje.current.value;
+    var correo = this.correo.current.value;
+    var servicio = this.servicio.current.value;
+    pedodo = this.pedido.current.value;
     this.setState({
       email: email,
       asunto: asunto,
       mensaje: mensaje,
+      correo: correo,
+      servicio: servicio,
+      pedido: pedido,
     });
   };
 
@@ -34,6 +46,9 @@ class SendMail extends Component {
       email,
       asunto,
       mensaje,
+      correo,
+      tipoServicio,
+      pedidoEspecial,
     });
   }
 
