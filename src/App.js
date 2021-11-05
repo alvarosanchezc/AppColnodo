@@ -4,14 +4,17 @@ import Index from "./Components/Index";
 import Layout from "./Components/Layout";
 import Services from "./Components/Services";
 import About from "./Components/AboutUs";
-import Contacto from "./Components/Contacto";
+import Contact from "./Components/Contacto";
+import Carrito from "./Components/Carrito";
 import "bootstrap/dist/css/bootstrap.css";
+import "./jquery/jquery.min.js";
 function App() {
   return (
     <BrowserRouter>
       <Layout>
         <Switch>
-          <Route path="/contact" component={Contacto} />
+          <Route path="/Carrito" component={Carrito} />
+          <Route path="/contact" component={Contact} />
           <Route path="/nosotros" component={About} />
           <Route path="/servicios" component={Services} />
           <Route path="/" component={Index} />
