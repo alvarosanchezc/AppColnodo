@@ -7,7 +7,6 @@ import About from "./Components/AboutUs";
 import Contact from "./Components/Contacto";
 import Carrito from "./Components/Carrito";
 import "bootstrap/dist/css/bootstrap.css";
-import "./jquery/jquery.min.js";
 function App() {
   return (
     <BrowserRouter>
