@@ -2,7 +2,6 @@ import React from "react";
 import "./Styles/contacto.css";
 import "./Styles/estilos.css";
 import "./Styles/font.css";
-
 class Carrito extends React.Component {
   render() {
     return (
