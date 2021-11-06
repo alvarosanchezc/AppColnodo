@@ -19,26 +19,22 @@ const obtenerDatos = async() =>{
 return (
 
 
-  <div id="template-carrito">
+  <div className="row" id="cards">
       {
 
 
         productos.map(item =>(
-          <tr>
-            <th scope="row">{item.id}</th>
-            <td>{item.title}</td>
-            <td>{item.id}</td>
-           <td>
-              <img src="{item.thumbnailUrl}" alt="" className="img-miniatura" />
-            </td>
-            <td>
-              <button className="btn btn-info btn-sm">+</button>
-              <button className="btn btn-danger btn-sm">-</button>
-            </td>
-            <td>
-              $ <span>{item.precio}</span>
-            </td>
-          </tr>
+          
+           <div class="col-12 mb-2 col-md-4">
+        <div class="card">
+             <div class="card-body">
+            <img src="{item.thumbnailUrl}" alt="" class="card-img-top"/>
+            <h5>{item.title}</h5>
+            <p>{item.precio}</p>
+            <button class="btn btn-dark" data-bs-toggle="modal" data-bs-target="#exampleModal1" data-id="1">Comprar</button>
+          </div>
+        </div>
+      </div>
           ))
       }
         </div>

@@ -9,14 +9,16 @@ class ComponentCarrito extends React.Component {
   render() {
     return (
       <React.Fragment>
-      <Carrito/>
+      
       <Modal/>
         <div className="container">
           <h1>
             <center>Carrito</center>
           </h1>
           <hr />
+
           <div className="row" id="cards"></div>
+          <Carrito/>
         </div>
 
         <table className="table">
