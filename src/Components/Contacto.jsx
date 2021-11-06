@@ -1,6 +1,5 @@
 import React from "react";
 import "./Styles/contacto.css";
-import "./Styles/estilos.css";
 import "./Styles/font.css";
 import axios from "axios";
 
