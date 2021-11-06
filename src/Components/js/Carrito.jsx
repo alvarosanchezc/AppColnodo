@@ -29,7 +29,7 @@ const Carrito = () => {
                 class="btn btn-dark"
                 data-bs-toggle="modal"
                 data-bs-target="#exampleModal1"
-                data-id="1"
+                data-id={item.id}
               >
                 Comprar
               </button>
@@ -40,5 +40,6 @@ const Carrito = () => {
     </div>
   );
 };
+
 
 export default Carrito;
