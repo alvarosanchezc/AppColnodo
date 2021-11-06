@@ -28,7 +28,7 @@ return (
            <div class="col-12 mb-2 col-md-4">
         <div class="card">
              <div class="card-body">
-            <img src="{item.thumbnailUrl}" alt="" class="card-img-top"/>
+            <img src={item.thumbnailUrl} alt="" class="card-img-top"/>
             <h5>{item.title}</h5>
             <p>{item.precio}</p>
             <button class="btn btn-dark" data-bs-toggle="modal" data-bs-target="#exampleModal1" data-id="1">Comprar</button>
