@@ -1,15 +1,13 @@
 import React,{Fragment,useState } from "react";
+import Carrito from "../Carrito";
 let temporal;
 const cards = document.getElementById('cards');
-const footer = document.getElementById('footer');
 
 
 const Cards = (props) => {
   let array2 =[];
-
   const [productos, setProducto] = React.useState([]);
-  const [veda, setVeda] = React.useState({});
-
+  const [veda, setVeda] = React.useState([]);
   React.useEffect(() => {
     obtenerDatos();
   }, []);
@@ -29,18 +27,23 @@ const Cards = (props) => {
     imagen:e.target.parentElement.querySelector('img').getAttribute("src"),
     cantidad: 1
     })
-    console.log(cards)
     //console.log(array2);
-    //console.log(array2);
+    console.log(array2);
+
     localStorage.setItem('elemento', JSON.stringify(veda))
+    //console.log(localStorage.getItem('elemento'))
+    //convierte el json en un array
+    //console.log(JSON.parse(localStorage.getItem('elemento')))
+    //console.log(array2);
     //console.log(veda[e.target.dataset.id])
    // console.log(Object.values(e));
    // console.log(footer.parentElement.querySelector('th').innerHTML="Hola");
 
   //console.log(e.target.parentElement.querySelector('button').id);
   //e.target.parentElement.querySelector('h5').textContent = producto.title;
-}
 
+}
+//escucha el boton comprar
 return (
 
 <React.Fragment>
@@ -71,68 +74,8 @@ return (
         </div>
       ))}
 </div>
-      
-<div className="container"> </div>
-          <div className="row" id="cards"></div>
+          <Carrito arr={veda}/>
 
-           <h1>
-            <center>Carrito</center>
-          </h1>
-        <table className="table">
-          <thead>
-            <tr>
-              <th scope="col">#</th>
-              <th scope="col">Item</th>
-              <th scope="col">Cantidad</th>
-              <th scope="col">Presentación</th>
-              <th scope="col">Acción</th>
-              <th scope="col">Total</th>
-            </tr>
-          </thead>
-          <tbody id="items"></tbody>
-      {
-              <tr>
-              <th scope="row">{veda.id}</th>
-              <th scope="row">{veda.title}</th>
-              <th scope="row">{veda.cantidad}</th>
-              <th scope="row"><img
-                src={veda.imagen}
-                alt={"imagen de " + veda.title}
-                class="card-img-top"
-              /></th>
-              <th scope="row">{}</th>
-              <th scope="row">{}</th>
-              <th scope="row">{}</th>
-              </tr>
-            }
-          
-          <tfoot>
-            <tr id="footer">
-              <th scope="row" colspan="5">
-                Carrito vacío - comience a comprar!
-              </th>
-            </tr>
-          </tfoot>
-        </table>
-        <template id="template-footer">
-          <th scope="row" colspan="2">
-            Total productos
-          </th>
-          <td></td>
-          <td>
-            <button className="btn btn-danger btn-sm" id="vaciar-carrito">
-              vaciar todo
-            </button>
-          </td>
-          <td>
-            <button className="btn btn-danger btn-sm" id="confirmar-pedido">
-              Finalizar Pedido
-            </button>
-          </td>
-          <td className="font-weight-bold">
-            $ <span>5000</span>
-          </td>
-        </template>
       </React.Fragment>
   );
   }

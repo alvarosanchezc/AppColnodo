@@ -13,7 +13,6 @@ class ComponentCarrito extends React.Component {
         <div className="container" id="template-cards">
           <Cards/>
          </div>
-          
       </React.Fragment>
     );
   }
