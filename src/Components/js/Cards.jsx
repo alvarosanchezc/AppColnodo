@@ -1,9 +1,15 @@
 import React,{Fragment,useState } from "react";
 let temporal;
+const cards = document.getElementById('cards');
+const footer = document.getElementById('footer');
 
-const Carrito = (props) => {
+
+const Cards = (props) => {
+  let array2 =[];
+
   const [productos, setProducto] = React.useState([]);
   const [veda, setVeda] = React.useState({});
+
   React.useEffect(() => {
     obtenerDatos();
   }, []);
@@ -15,6 +21,7 @@ const Carrito = (props) => {
   };
 
   const pintarCarrito= async (e) =>{
+   // console.log(array2.length);
     setVeda({
     id: e.target.parentElement.querySelector('button').id,
     title: e.target.parentElement.querySelector('h5').textContent,
@@ -22,7 +29,13 @@ const Carrito = (props) => {
     imagen:e.target.parentElement.querySelector('img').getAttribute("src"),
     cantidad: 1
     })
-    console.log();
+    console.log(cards)
+    //console.log(array2);
+    //console.log(array2);
+    localStorage.setItem('elemento', JSON.stringify(veda))
+    //console.log(veda[e.target.dataset.id])
+   // console.log(Object.values(e));
+   // console.log(footer.parentElement.querySelector('th').innerHTML="Hola");
 
   //console.log(e.target.parentElement.querySelector('button').id);
   //e.target.parentElement.querySelector('h5').textContent = producto.title;
@@ -123,4 +136,4 @@ return (
       </React.Fragment>
   );
   }
-export default Carrito;
+export default Cards;
