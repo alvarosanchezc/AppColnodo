@@ -1,8 +1,8 @@
 import React,{Fragment,useState } from "react";
 const cards = document.getElementById('cards');
 const footer = document.getElementById('footer');
-const Carrito = (props) => {
 
+const Carrito = (props) => {  
 return (
 <React.Fragment>
 <div className="container"> </div>
@@ -22,29 +22,33 @@ return (
             </tr>
           </thead>
           <tbody id="items"></tbody>
-      {
+         
+      { 
+      props.arr.id > 0 &&
               <tr>
               <th scope="row">{props.arr.id}</th>
               <th scope="row">{props.arr.title}</th>
               <th scope="row">{props.arr.cantidad}</th>
               <th scope="row"><img
+                className="img-miniatura"
                 src={props.arr.imagen}
                 alt={"imagen de "+props.arr.title}
-                class="card-img-top"
               /></th>
               <th scope="row">{}</th>
               <th scope="row">{}</th>
               <th scope="row">{props.arr.precio*props.arr.cantidad}</th>
               </tr>
+              
             }
-          
-          <tfoot>
-            <tr id="footer">
-              <th scope="row" colspan="5">
+            {props.arr.id===undefined &&
+           <tfoot>
+             <tr id="footer">
+            <th scope="row" colspan="5">
                 Carrito vacío - comience a comprar!
               </th>
             </tr>
           </tfoot>
+          }
         </table>
         <template id="template-footer">
           <th scope="row" colspan="2">

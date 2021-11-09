@@ -5,9 +5,10 @@ const cards = document.getElementById('cards');
 
 
 const Cards = (props) => {
-  let array2 =[];
   const [productos, setProducto] = React.useState([]);
-  const [veda, setVeda] = React.useState([]);
+  let veda=[];
+  let nuevoObjeto={};
+  let contador=1;
   React.useEffect(() => {
     obtenerDatos();
   }, []);
@@ -20,17 +21,35 @@ const Cards = (props) => {
 
   const pintarCarrito= async (e) =>{
    // console.log(array2.length);
-    setVeda({
-    id: e.target.parentElement.querySelector('button').id,
-    title: e.target.parentElement.querySelector('h5').textContent,
-    precio: e.target.parentElement.querySelector('p').textContent,
-    imagen:e.target.parentElement.querySelector('img').getAttribute("src"),
-    cantidad: 1
-    })
-    //console.log(array2);
-    console.log(array2);
+   // if (e.target.parentElement.querySelector('button').id===veda[e.target.parentElement.querySelector('button').id].nuevoObjeto.id) {
+   console.log(Object.keys(nuevoObjeto).length=== 0); 
+   nuevoObjeto = { 
+    id : e.target.parentElement.querySelector('button').id,
+    title : e.target.parentElement.querySelector('h5').textContent,
+    precio : e.target.parentElement.querySelector('p').textContent,
+    imagen :e.target.parentElement.querySelector('img').getAttribute("src"),
+    cantidad:1
+    }
 
+    veda[e.target.parentElement.querySelector('button').id-1]= nuevoObjeto
+    console.log(veda);
+    //console.log(contador++);
+    //console.log(nuevoObjeto2)
+    //[e.target.parentElement.querySelector('button').id]
+    
+  
+  
+    //console.log(e.target.parentElement.querySelector('button').id===veda[e.target.parentElement.querySelector('button').id].nuevoObjeto.id);
+    //comparar
+    //console.log(veda[e.target.parentElement.querySelector('button').id].nuevoObjeto.id)
     localStorage.setItem('elemento', JSON.stringify(veda))
+    //console.log(nuevoObjeto)
+    //console.log(array2);
+    //console.log(array2);
+    //veda . id
+   // console.log(veda[e.target.parentElement.querySelector('button').id].nuevoObjeto.id);
+    //localStorage.setItem('elemento', JSON.stringify(veda))
+    
     //console.log(localStorage.getItem('elemento'))
     //convierte el json en un array
     //console.log(JSON.parse(localStorage.getItem('elemento')))
@@ -72,10 +91,14 @@ return (
             </div>
           </div>
         </div>
-      ))}
-</div>
-          <Carrito arr={veda}/>
+      ))
+      }
+      
 
+</div>
+
+<div id="root"></div>
+         <Carrito arr={veda}/>
       </React.Fragment>
   );
   }
