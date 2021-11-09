@@ -31,7 +31,7 @@ class Header extends React.Component {
                 </Link>
               </li>
               <li class="menu__item">
-                <Link to="menu" className="menu__link">
+                <Link to="/menu" className="menu__link">
                   Menu
                 </Link>
               </li>

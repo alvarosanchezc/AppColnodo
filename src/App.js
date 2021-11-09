@@ -1,11 +1,12 @@
 import "./App.css";
 import { BrowserRouter, Route, Switch } from "react-router-dom";
+import Menu from "./Components/Menu";
 import Index from "./Components/Index";
 import Layout from "./Components/Layout";
 import Services from "./Components/Services";
 import About from "./Components/AboutUs";
-import Contact from "./Components/Contacto";
 import Carrito from "./Components/ComponentCarrito";
+import Contacto from "./Components/Contacto";
 import "bootstrap/dist/css/bootstrap.css";
 
 function App() {
@@ -14,7 +15,8 @@ function App() {
       <Layout>
         <Switch>
           <Route path="/Carrito" component={Carrito} />
-          <Route path="/contact" component={Contact} />
+          <Route path="/contact" component={Contacto} />
+          <Route path="/menu" component={Menu} />
           <Route path="/nosotros" component={About} />
           <Route path="/servicios" component={Services} />
           <Route path="/" component={Index} />
