@@ -1,20 +1,12 @@
 import React from "react";
 import imgPasta from "./img/pasta.jpg";
-import "./Styles/contacto.css";
-import "./Styles/estilos.css";
-import "./Styles/font.css";
 
 class Menu extends React.Component {
   render() {
     return (
       <React.Fragment>
         <div class="group gallery">
-          <h2
-            style="font-family: 'Pacifico', cursive; text-align: center; color: #DE423A; margin: 20px 0 20px 0;"
-            class="group__title"
-          >
-            Nuestro Menú
-          </h2>
+          <h2 class="group__title">Nuestro Menú</h2>
           <div class="container container--flex">
             <div class="row row-cols-1 row-cols-md-3 g-4">
               <div class="col">
