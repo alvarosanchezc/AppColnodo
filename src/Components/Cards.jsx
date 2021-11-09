@@ -1,22 +1,21 @@
-import React,{Fragment,useState } from "react";
-import Carrito from "../Carrito";
-let temporal;
-const cards = document.getElementById('cards');
-
+import React, { useEffect } from 'react';
+import Carrito from "./Carrito";
 
 const Cards = (props) => {
   const [productos, setProducto] = React.useState([]);
   let veda=[];
   let nuevoObjeto={};
   let contador=1;
-  React.useEffect(() => {
+  useEffect(() => {
+    console.log("ya cargue")
     obtenerDatos();
   }, []);
   //llamar al json
     const obtenerDatos = async () => {
-    const data = await fetch("api.json");
+    const data = await fetch("/api.json");
     const informacion = await data.json();
     setProducto(informacion);
+  
   };
 
   const pintarCarrito= async (e) =>{
@@ -93,8 +92,6 @@ return (
         </div>
       ))
       }
-      
-
 </div>
 
 <div id="root"></div>

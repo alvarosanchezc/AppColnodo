@@ -1,6 +1,4 @@
 import React,{Fragment,useState } from "react";
-const cards = document.getElementById('cards');
-const footer = document.getElementById('footer');
 
 const Carrito = (props) => {  
 return (
