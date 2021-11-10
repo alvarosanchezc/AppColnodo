@@ -3,7 +3,7 @@ import "./Styles/contacto.css";
 import "./Styles/estilos.css";
 import "./Styles/font.css";
 import Modal from "./modal";
-import Carrito from "./js/Carrito";
+import Carrito from "/js/Carrito";
 
 class ComponentCarrito extends React.Component {
   render() {
