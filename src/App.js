@@ -5,9 +5,8 @@ import Layout from "./Components/Layout";
 import Services from "./Components/Services";
 import About from "./Components/AboutUs";
 import Contact from "./Components/Contacto";
-import Carrito from "./Components/ComponentCarrito";
+import Carrito from "./Components/Carrito";
 import "bootstrap/dist/css/bootstrap.css";
-
 function App() {
   return (
     <BrowserRouter>
