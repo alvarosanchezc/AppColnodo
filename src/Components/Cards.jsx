@@ -12,7 +12,7 @@ const Cards = (props) => {
   }, []);
   //llamar al json
     const obtenerDatos = async () => {
-    const data = await fetch("/api.json");
+    const data = await fetch('api.json');
     const informacion = await data.json();
     setProducto(informacion);
   
