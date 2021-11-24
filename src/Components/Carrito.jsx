@@ -1,6 +1,25 @@
-import React,{Fragment,useState } from "react";
+import React, { useEffect } from 'react';
 
-const Carrito = (props) => {  
+const Carrito = (props) => {
+  const [listaPedido, setListaPedido] = React.useState([]);
+
+useEffect(() => {
+    obtenerDatos();
+  }, []);
+  //llamar al json
+    const obtenerDatos = async () => {
+    const dato = await fetch('http://localhost:5000/api/pedido/');
+    const informacion = await dato.json();
+    setListaPedido(informacion);
+    showContent();
+  };
+
+function showContent() {
+  var temp = document.getElementsByTagName("template")[0];
+ 
+  document.body.appendChild(temp);
+}
+
 return (
 <React.Fragment>
 <div className="container"> </div>
@@ -19,26 +38,24 @@ return (
               <th scope="col">Total</th>
             </tr>
           </thead>
-          <tbody id="items"></tbody>
-         
-      { 
-      props.arr.id > 0 &&
+          {listaPedido.map((item) => (
+          <tbody id="items">
+          
               <tr>
-              <th scope="row">{props.arr.id}</th>
-              <th scope="row">{props.arr.title}</th>
-              <th scope="row">{props.arr.cantidad}</th>
+              <th scope="row">{item.id}</th>
+              <th scope="row">{item.nombre}</th>
+              <th scope="row">{item.cantidad}</th>
               <th scope="row"><img
                 className="img-miniatura"
-                src={props.arr.imagen}
-                alt={"imagen de "+props.arr.title}
+                src={item.imagen}
+                alt="kk"
               /></th>
-              <th scope="row">{}</th>
-              <th scope="row">{}</th>
-              <th scope="row">{props.arr.precio*props.arr.cantidad}</th>
-              </tr>
-              
-            }
-            {props.arr.id===undefined &&
+              <th scope="row"></th>
+              <th scope="row"></th>
+              <th scope="row">{item.subtotal}</th>
+              </tr> 
+              </tbody>
+              ))}
            <tfoot>
              <tr id="footer">
             <th scope="row" colspan="5">
@@ -46,13 +63,13 @@ return (
               </th>
             </tr>
           </tfoot>
-          }
+          
         </table>
         <template id="template-footer">
           <th scope="row" colspan="2">
             Total productos
           </th>
-          <td></td>
+          <td>kfkkf</td>
           <td>
             <button className="btn btn-danger btn-sm" id="vaciar-carrito">
               vaciar todo
