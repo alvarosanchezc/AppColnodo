@@ -1,5 +1,5 @@
 import React, { useEffect } from 'react';
-
+import axios from "axios";
 const Carrito = (props) => {
   const [listaPedido, setListaPedido] = React.useState([]);
 
@@ -7,6 +7,7 @@ useEffect(() => {
     obtenerDatos();
   }, []);
   //llamar al json
+    const [data, setData] = React.useState([]);
     const obtenerDatos = async () => {
     const dato = await fetch('http://localhost:5000/api/pedido/');
     const informacion = await dato.json();
@@ -16,8 +17,30 @@ useEffect(() => {
 
 function showContent() {
   var temp = document.getElementsByTagName("template")[0];
- 
+
   document.body.appendChild(temp);
+}
+const borrarPedido = (id) => {
+console.log(id)
+    fetch("http://localhost:5000/api/pedido/" + id, {
+      method: "DELETE",
+    })
+      .then((response) => response.json())
+      .then((data) => {
+        console.log(data)
+        alert("dato eliminado");
+      });
+  }
+const agregarProductos = async (e) =>{
+    let nuevoProducto = {
+      Cliente_id : 1,
+      Plato_id :  e.target.id
+    };
+    console.log(e.target.id);
+    await axios.post("http://localhost:5000/api/pedido/", nuevoProducto)
+    .then(response=>{
+      setData(data.concat(response.data));
+    })
 }
 
 return (
@@ -50,26 +73,22 @@ return (
                 src={item.imagen}
                 alt="kk"
               /></th>
-              <th scope="row"></th>
-              <th scope="row"></th>
+              <th scope="row"><button id={item.id} class="btn btn-info btn-sm" onClick={agregarProductos}>
+                +
+            </button>
+           
+              <th scope="row">  <button class="btn btn-danger btn-sm" onClick={() => borrarPedido(item.pedidoId)}>
+                -
+            </button></th></th>
               <th scope="row">{item.subtotal}</th>
               </tr> 
               </tbody>
-              ))}
+               ))}
            <tfoot>
-             <tr id="footer">
-            <th scope="row" colspan="5">
-                Carrito vacío - comience a comprar!
-              </th>
-            </tr>
-          </tfoot>
-          
-        </table>
-        <template id="template-footer">
-          <th scope="row" colspan="2">
+            <th scope="row" colspan="2">
             Total productos
           </th>
-          <td>kfkkf</td>
+          <td></td>
           <td>
             <button className="btn btn-danger btn-sm" id="vaciar-carrito">
               vaciar todo
@@ -83,7 +102,20 @@ return (
           <td className="font-weight-bold">
             $ <span>5000</span>
           </td>
-        </template>        
+             <tr id="footer">
+            <th scope="row" colspan="5">
+                Carrito vacío - comience a comprar!
+              </th>
+            </tr>
+
+          </tfoot>
+
+        </table>
+
+        <template id="template-footer">
+          
+        </template>  
+
       </React.Fragment>
   );
   }

@@ -57,6 +57,7 @@ return (
                 src={item.imagen}
                 alt={"imagen de " + item.nombre}
                 class="card-img-top"
+                id="img-cards"
               />
               <h5>{item.nombre}</h5>
               <p>{item.precio}</p>
