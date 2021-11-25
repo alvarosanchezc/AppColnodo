@@ -67,7 +67,7 @@ class Header extends React.Component {
 
 
             <li class="menu__ingreso">
-                <Link to="/mapadesitio" className="menu__link">
+                <Link to="/login" className="menu__link">
                   Ingresar
                 </Link>
               </li>
