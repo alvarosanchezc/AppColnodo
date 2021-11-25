@@ -63,18 +63,22 @@ class Header extends React.Component {
                   />
                 </Link>
               </li>
+
+
+
+            <li class="menu__ingreso">
+                <Link to="/mapadesitio" className="menu__link">
+                  Ingresar
+                </Link>
+              </li>
+                <li class="menu__item">
+                <Link to="/mapadesitio" className="menu__link">
+                  Registrarse
+                </Link>
+              </li>
             </ul>
-            <div class="social-icon">
-              <a href="" class="social-icon__link">
-                <span class="icon-whatsapp"></span>
-              </a>
-              <a href="" class="social-icon__link">
-                <span class="icon-facebook-square"></span>
-              </a>
-              <a href="" class="social-icon__link">
-                <span class="icon-instagram"></span>
-              </a>
-            </div>
+
+
           </div>
         </nav>
 
