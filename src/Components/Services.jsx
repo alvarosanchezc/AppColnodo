@@ -1,11 +1,5 @@
 import React from "react";
 import "./Styles/Services.css";
-import imgCumpleaños from "../images/cumpleaños.jpeg";
-import imgAniversario from "../images/aniversario.jpg";
-import imgInfantiles from "../images/infantiles.jpg";
-import imgDeclaracion from "../images/declaracion.jpg";
-import imgDespedida from "../images/despedidas.jpg";
-import imgAmigo from "../images/amigos.jpg";
 class Services extends React.Component {
   render() {
     return (
@@ -16,7 +10,7 @@ class Services extends React.Component {
             <div className="row row-cols-1 row-cols-md-2 g-4">
               <div className="col">
                 <div className="card h-100">
-                  <img alt="..." className="card-img-top" src={imgCumpleaños} />
+                  <img alt="cumpleaños" className="card-img-top" src="" />
                   <div className="card-body">
                     <h5 className="card-title">Celebración de cumpleaños</h5>
                     <p className="card-text">
@@ -38,7 +32,7 @@ class Services extends React.Component {
 
               <div className="col">
                 <div className="card h-100">
-                  <img alt="..." className="card-img-top" src={imgAniversario} />
+                  <img alt="aniversario" className="card-img-top" src="" />
                   <div className="card-body">
                     <h5 className="card-title">Aniversarios</h5>
                     <p className="card-text">
@@ -60,7 +54,7 @@ class Services extends React.Component {
 
               <div className="col">
                 <div className="card h-100">
-                  <img alt="..." className="card-img-top" src={imgInfantiles} />
+                  <img alt="infantiles" className="card-img-top" src="" />
                   <div className="card-body">
                     <h5 className="card-title">Fiestas infantiles</h5>
                     <p className="card-text">
@@ -82,7 +76,7 @@ class Services extends React.Component {
 
               <div className="col">
                 <div className="card h-100">
-                  <img alt="..." className="card-img-top" src={imgDeclaracion} />
+                  <img alt="declaracion" className="card-img-top" src="" />
                   <div className="card-body">
                     <h5 className="card-title">Declaraiones o propuestas</h5>
                     <p className="card-text">
@@ -103,7 +97,7 @@ class Services extends React.Component {
 
               <div className="col">
                 <div className="card h-100">
-                  <img alt="..." className="card-img-top" src={imgDespedida} />
+                  <img alt="despedidas" className="card-img-top" src="" />
                   <div className="card-body">
                     <h5 className="card-title">Despedidas</h5>
                     <p className="card-text">
@@ -125,7 +119,7 @@ class Services extends React.Component {
 
               <div className="col">
                 <div className="card h-100">
-                  <img alt="." className="card-img-top" src={imgAmigo} />
+                  <img alt="imagen amigo" className="card-img-top" src="" />
                   <div className="card-body">
                     <h5 className="card-title">Cena con amigos</h5>
                     <p className="card-text">

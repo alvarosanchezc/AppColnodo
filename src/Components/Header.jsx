@@ -3,9 +3,6 @@ import "./Styles/Services.css";
 import { Link } from "react-router-dom";
 
 import imgBag from "../images/bag.svg";
-import imgPromocion3 from "../images/promocion_3.jpg";
-import imgPromocion4 from "../images/promocion_4.jpg";
-import imgPromocion6 from "../images/promocion_6.jpg";
 
 class Header extends React.Component {
   render() {
@@ -105,13 +102,13 @@ class Header extends React.Component {
             </div>
             <div class="carousel-inner">
               <div class="carousel-item active">
-                <img src={imgPromocion3} class="d-block w-100" alt="..." />
+                <img src="" class="d-block w-100" alt="promocion_3" />
               </div>
               <div class="carousel-item">
-                <img src={imgPromocion4} class="d-block w-100" alt="..." />
+                <img src="" class="d-block w-100" alt="imgPromocion4" />
               </div>
               <div class="carousel-item">
-                <img src={imgPromocion6} class="d-block w-100" alt="..." />
+                <img src="" class="d-block w-100" alt="imgPromocion6" />
               </div>
             </div>
             <button

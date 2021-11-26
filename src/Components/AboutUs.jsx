@@ -1,11 +1,6 @@
 import React from "react";
 import "./Styles/AboutUs.css";
-import imgChef from "../images/chef.jpg";
-import imgCliente1 from "../images/lucas.jpg";
-import imgCliente2 from "../images/magdalena.jpg";
-import imgCliente3 from "../images/maria.jpg";
-import Admin from "../images/admin.jpg";
-import Mesera from "../images/mesera.jpg";
+
 
 class AboutUs extends React.Component {
   render() {
@@ -28,7 +23,7 @@ class AboutUs extends React.Component {
               <div className="column column--33">
                 <h3 className="our-team__title">Raul</h3>
                 <img
-                  src={imgChef}
+                  src=""
                   alt="imagen del chef"
                   className="our-team__img"
                 />
@@ -41,7 +36,7 @@ class AboutUs extends React.Component {
               <div className="column column--33">
                 <h3 className="our-team__title">Andrea</h3>
                 <img
-                  src={Admin}
+                  src=""
                   alt="imagen del administrador"
                   className="our-team__img"
                 />
@@ -54,7 +49,7 @@ class AboutUs extends React.Component {
               <div className="column column--33">
                 <h3 className="our-team__title">Ana</h3>
                 <img
-                  src={Mesera}
+                  src=""
                   alt="imagen de la mesera"
                   className="our-team__img"
                 />
@@ -73,7 +68,7 @@ class AboutUs extends React.Component {
                 <div className="testimonial-item">
                   <div className="testimonial-client" align="center">
                     <img
-                      src={imgCliente1}
+                      src=""
                       alt="imagen de un cliente"
                       className="our-team__img"
                     />
@@ -89,8 +84,8 @@ class AboutUs extends React.Component {
                 <div className="testimonial-item">
                   <div className="testimonial-client" align="center">
                     <img
-                      src={imgCliente2}
-                      alt="imagen de un cliente"
+                      src=""
+                      alt="imagen de cliente 2"
                       className="our-team__img"
                     />
                     <p className="client-name">Fernanda Castro</p>
@@ -105,8 +100,8 @@ class AboutUs extends React.Component {
                 <div className="testimonial-item">
                   <div className="testimonial-client" align="center">
                     <img
-                      src={imgCliente3}
-                      alt="imagen de un cliente"
+                      src=""
+                      alt="imagen de cliente 3"
                       className="our-team__img"
                     />
                     <p className="client-name">Adriana Fernandez</p>

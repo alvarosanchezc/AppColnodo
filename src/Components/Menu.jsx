@@ -1,5 +1,4 @@
 import React, {useEffect}  from "react";
-import imgPasta from "./img/pasta.jpg";
 
 const Menu = (props) => {
   const [productos, setProducto] = React.useState([]);
