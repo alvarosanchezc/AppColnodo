@@ -1,6 +1,7 @@
 import React, { useEffect } from 'react';
 import Carrito from "./Carrito";
 import axios from "axios";
+
 const Cards = (props) => {
   const [productos, setProducto] = React.useState([]);
   const [data, setData] = React.useState([]);
@@ -13,7 +14,7 @@ const Cards = (props) => {
     const informacion = await dato.json();
     setProducto(informacion);
   };
-
+//agrega productos a la tabla de pedidos
   const agregarProductos = async (e) =>{
     let nuevoProducto = {
       Cliente_id : 1,
@@ -23,27 +24,8 @@ const Cards = (props) => {
     .then(response=>{
       setData(data.concat(response.data));
     })
-  //console.log(Pedido)
-   /*
-    e.preventDefault();
-    let nuevoObjeto =  {
-    Cliente_id : 1,
-    Plato_id : e.target.parentElement.querySelector('button').id,
-  }
-
-
-    fetch("http://localhost:5000/api/pedido/", nuevoObjeto,
-     {
-      method: "POST",
-    }).then((response) => response.json()).then((data) => {
-        console.log(data);
-        alert("dato agregado");
-      }).catch(error=>{
-        console.log(error);
-      });
-      */
 }
-//escucha el boton comprar
+
 return (
 
 <React.Fragment>
