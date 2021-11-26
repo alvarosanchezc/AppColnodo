@@ -50,6 +50,11 @@ class Header extends React.Component {
                   Ubicacion
                 </Link>
               </li>
+              <li class="menu__ingreso">
+                <Link to="/login" className="menu__link">
+                  Ingresar
+                </Link>
+              </li> 
               <li class="menu__item">
                 <Link to="/Carrito" className="menu__link">
                   <iframe
@@ -63,19 +68,7 @@ class Header extends React.Component {
                   />
                 </Link>
               </li>
-
-
-
-            <li class="menu__ingreso">
-                <Link to="/login" className="menu__link">
-                  Ingresar
-                </Link>
-              </li>
-                <li class="menu__item">
-                <Link to="/mapadesitio" className="menu__link">
-                  Registrarse
-                </Link>
-              </li>
+              
             </ul>
 
 

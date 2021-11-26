@@ -12,7 +12,6 @@ const Cards = (props) => {
     const dato = await fetch('http://localhost:5000/api/plato');
     const informacion = await dato.json();
     setProducto(informacion);
-  
   };
 
   const agregarProductos = async (e) =>{

@@ -1,16 +1,18 @@
 import React, { Component } from "react";
 import { Link } from "react-router-dom";
+import axios from "axios";
 
 class SignUp extends Component {
+
   constructor() {
     super();
 
     this.state = {
-      email: "",
-      password: "",
-      name: "",
-      hasAgreed: false
-    };
+      Nombre: "",
+      Correo: "",
+      NombreUsuario:"",
+      Contrasena: ""
+      };
 
     this.handleChange = this.handleChange.bind(this);
     this.handleSubmit = this.handleSubmit.bind(this);
@@ -24,13 +26,38 @@ class SignUp extends Component {
     this.setState({
       [name]: value
     });
+    
   }
-
+  
   handleSubmit(e) {
     e.preventDefault();
 
     console.log("The form was submitted with the following data:");
     console.log(this.state);
+  }
+agregarCliente(state) {
+  console.log("Este es el state: ");
+    console.log(JSON.stringify(state));
+    fetch('http://localhost:5000/api/cliente/', {
+        method: 'POST',
+        body: JSON.stringify(state),
+        headers: {
+            'Content-type': 'application/json; charset=UTF-8'
+        }
+    })
+    .then(response => response.json())
+    .then(json => {
+        alert("Te has registrado exitosamente");
+    });
+/*
+    fetch("http://localhost:5000/api/cliente/", state, {
+      method: "POST",
+    })
+      .await((response) => response.json())
+      .then((data) => {
+        console.log(data)
+        alert("dato eliminado");
+      });*/
   }
 
   render() {
@@ -39,67 +66,78 @@ class SignUp extends Component {
         <form onSubmit={this.handleSubmit} className="formFields">
           <div className="formField">
             <label className="formFieldLabel" htmlFor="name">
-              Full Name
+              Nombre
             </label>
             <input
               type="text"
               id="name"
               className="formFieldInput"
-              placeholder="Enter your full name"
-              name="name"
+              placeholder="Introduce tu nombre"
+              name="Nombre"
               value={this.state.name}
               onChange={this.handleChange}
             />
           </div>
           <div className="formField">
             <label className="formFieldLabel" htmlFor="password">
-              Password
+              Contraseña
             </label>
             <input
               type="password"
               id="password"
               className="formFieldInput"
-              placeholder="Enter your password"
-              name="password"
+              placeholder="Introduce tu contraseña"
+              name="Contrasena"
               value={this.state.password}
               onChange={this.handleChange}
             />
           </div>
           <div className="formField">
             <label className="formFieldLabel" htmlFor="email">
-              E-Mail Address
+              Correo electronico
             </label>
             <input
               type="email"
               id="email"
               className="formFieldInput"
-              placeholder="Enter your email"
-              name="email"
+              placeholder="Introduce tu correo electronico"
+              name="Correo"
               value={this.state.email}
               onChange={this.handleChange}
             />
           </div>
-
+<div className="formField">
+            <label className="formFieldLabel" htmlFor="name">
+              Nombre De Usuario
+            </label>
+            <input
+              type="text"
+              id="name"
+              className="formFieldInput"
+              placeholder="Introduce un nombre de usuario"
+              name="NombreUsuario"
+              value={this.state.name}
+              onChange={this.handleChange}
+            />
+          </div>
           <div className="formField">
             <label className="formFieldCheckboxLabel">
               <input
+                required
                 className="formFieldCheckbox"
                 type="checkbox"
-                name="hasAgreed"
-                value={this.state.hasAgreed}
-                onChange={this.handleChange}
               />{" "}
-              I agree all statements in{" "}
-              <a href="null" className="formFieldTermsLink">
-                terms of service
+              Acepto los terminos decarados en{" "}
+              <a className="formFieldTermsLink">
+                terminos del servicio
               </a>
             </label>
           </div>
 
           <div className="formField">
-            <button className="formFieldButton">Sign Up</button>{" "}
-            <Link to="/sign-in" className="formFieldLink">
-              I'm already member
+            <button onClick={() => this.agregarCliente(this.state)} className="formFieldButton">Registrarme</button>{" "}
+            <Link to="/" className="formFieldLink">
+              Ya tengo una cuenta
             </Link>
           </div>
         </form>

@@ -38,13 +38,13 @@ class Login extends React.Component {
         <form className="formFields" onSubmit={this.handleSubmit}>
           <div className="formField">
             <label className="formFieldLabel" htmlFor="email">
-              E-Mail Address
+              Correo electronico
             </label>
             <input
               type="email"
               id="email"
               className="formFieldInput"
-              placeholder="Enter your email"
+              placeholder="Ingrese su correo electronico"
               name="email"
               value={this.state.email}
               onChange={this.handleChange}
@@ -53,13 +53,13 @@ class Login extends React.Component {
 
           <div className="formField">
             <label className="formFieldLabel" htmlFor="password">
-              Password
+              Contraseña
             </label>
             <input
               type="password"
               id="password"
               className="formFieldInput"
-              placeholder="Enter your password"
+              placeholder="Ingrese su Contraseña"
               name="password"
               value={this.state.password}
               onChange={this.handleChange}
@@ -67,9 +67,9 @@ class Login extends React.Component {
           </div>
 
           <div className="formField">
-            <button className="formFieldButton">Sign In</button>{" "}
-            <Link to="/" className="formFieldLink">
-              Create an account
+            <button className="formFieldButton">Ingresar</button>{" "}
+            <Link to="/sign-up" className="formFieldLink">
+              Crear una cuenta
             </Link>
           </div>
 

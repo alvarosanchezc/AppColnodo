@@ -12,8 +12,10 @@ class ComponenteLogin extends React.Component {
           <div className="appAside" />
           <div className="appForm">
             <div className="pageSwitcher">
+              
               <NavLink
-                to="/sign-in"
+              exact
+                to="/"
                 activeClassName="pageSwitcherItem-active"
                 className="pageSwitcherItem"
               >
@@ -21,7 +23,7 @@ class ComponenteLogin extends React.Component {
               </NavLink>
               <NavLink
                 exact
-                to="/"
+                to="/sign-up"
                 activeClassName="pageSwitcherItem-active"
                 className="pageSwitcherItem"
               >
@@ -30,26 +32,28 @@ class ComponenteLogin extends React.Component {
             </div>
 
             <div className="formTitle">
-              <NavLink
-                to="/sign-in"
-                activeClassName="formTitleLink-active"
-                className="formTitleLink"
-              >
-                Sign In
-              </NavLink>{" "}
-              or{" "}
+              {" "}
+              
               <NavLink
                 exact
                 to="/"
                 activeClassName="formTitleLink-active"
                 className="formTitleLink"
               >
-                Sign Up
+               Ingresar
+              </NavLink>o{" "}
+              <NavLink
+                to="/sign-up"
+                activeClassName="formTitleLink-active"
+                className="formTitleLink"
+              >
+                 Registrarme
               </NavLink>
             </div>
 
-            <Route exact path="/" component={SignUpForm} />
-            <Route path="/sign-in" component={SignInForm} />
+            <Route exact path="/sign-up"  component={SignUpForm} />
+            <Route exact path="/"  component={SignInForm} />
+
           </div>
         </div>
       </Router>
