@@ -10,7 +10,7 @@ const Cards = (props) => {
   }, []);
   //llamar al json
     const obtenerDatos = async () => {
-    const dato = await fetch('http://localhost:5000/api/plato');
+    const dato = await fetch('https://dotnetrestaurante.herokuapp.com/api/plato');
     const informacion = await dato.json();
     setProducto(informacion);
   };
@@ -20,7 +20,7 @@ const Cards = (props) => {
       Cliente_id : 1,
       Plato_id :  e.target.parentElement.querySelector('button').id
     };
-    await axios.post("http://localhost:5000/api/pedido/", nuevoProducto)
+    await axios.post("https://dotnetrestaurante.herokuapp.com/api/pedido", nuevoProducto)
     .then(response=>{
       setData(data.concat(response.data));
     })

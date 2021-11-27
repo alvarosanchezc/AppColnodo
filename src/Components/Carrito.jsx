@@ -9,7 +9,7 @@ useEffect(() => {
   //llamar al json
     const [data, setData] = React.useState([]);
     const obtenerDatos = async () => {
-    const dato = await fetch('http://localhost:5000/api/pedido/');
+    const dato = await fetch('https://dotnetrestaurante.herokuapp.com/api/pedido');
     const informacion = await dato.json();
     setListaPedido(informacion);
     showContent();
@@ -22,7 +22,7 @@ function showContent() {
 }
 const borrarPedido = (id) => {
 console.log(id)
-    fetch("http://localhost:5000/api/pedido/" + id, {
+    fetch("https://dotnetrestaurante.herokuapp.com/api/pedido" + id, {
       method: "DELETE",
     })
       .then((response) => response.json())
@@ -37,7 +37,7 @@ const agregarProductos = async (e) =>{
       Plato_id :  e.target.id
     };
     console.log(e.target.id);
-    await axios.post("http://localhost:5000/api/pedido/", nuevoProducto)
+    await axios.post("https://dotnetrestaurante.herokuapp.com/api/pedido", nuevoProducto)
     .then(response=>{
       setData(data.concat(response.data));
     })

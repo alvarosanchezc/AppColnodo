@@ -7,7 +7,7 @@ useEffect(() => {
   }, []);
   //llamar al json
     const obtenerDatos = async () => {
-    const dato = await fetch('http://localhost:5000/api/plato');
+    const dato = await fetch('https://dotnetrestaurante.herokuapp.com/api/plato');
     const informacion = await dato.json();
     setProducto(informacion);
   };
