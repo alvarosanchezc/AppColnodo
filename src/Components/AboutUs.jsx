@@ -1,9 +1,33 @@
-import React from "react";
+import React, {useEffect}  from "react";
+import "./Styles/AboutUs.css";
 import "./Styles/AboutUs.css";
 
 
-class AboutUs extends React.Component {
-  render() {
+const AboutUs= (props) => {
+const [empleados, setEmpleado] = React.useState([]);
+const [clientes, setCliente] = React.useState([]);
+useEffect(() => {
+    obtenerDatos();
+  }, []);
+  //llamar al json
+    const obtenerDatos = async () => {
+    const dato = await fetch('https://dotnetrestaurante.herokuapp.com/api/empleado');
+    const informacion = await dato.json();
+    setEmpleado(informacion);
+    obtenerDatos();
+  };
+
+  useEffect(() => {
+    obtenerDatosComentario();
+  }, []);
+   //llamar al json
+    const obtenerDatosComentario = async () => {
+    const dato = await fetch('https://dotnetrestaurante.herokuapp.com/api/comentario');
+    const informacion = await dato.json();
+    setCliente(informacion);
+    obtenerDatosComentario();
+  };
+
     return (
       <React.Fragment>
         <main className="main">
@@ -17,108 +41,46 @@ class AboutUs extends React.Component {
               </p>
             </div>
           </section>
+
+
           <section className="group our-team">
             <h2 className="group__title  ">Nuestro equipo</h2>
             <div className="container container--flex">
+            {empleados.map((item) => (
               <div className="column column--33">
-                <h3 className="our-team__title">Raul</h3>
+                <h3 className="our-team__title">{item.nombre}</h3>
                 <img
-                  src=""
+                  src={item.Imagen}
                   alt="imagen del chef"
                   className="our-team__img"
                 />
                 <p className="our-team__txt">
-                  Raul es de nuestros mejores cocineros con experiencia en
-                  comida italiana,que estara a su dispocicion para preparar los
-                  mejores platos
+                  {item.Descripcion}
                 </p>
               </div>
-              <div className="column column--33">
-                <h3 className="our-team__title">Andrea</h3>
-                <img
-                  src=""
-                  alt="imagen del administrador"
-                  className="our-team__img"
-                />
-                <p className="our-team__txt">
-                  Andrea es nuestra administradora que esta al pendiente de que
-                  el trabajo en equipo sea continuo y optimo para seguir
-                  mejorando cada dia mas nuestro servicio a nuestros clientes.
-                </p>
-              </div>
-              <div className="column column--33">
-                <h3 className="our-team__title">Ana</h3>
-                <img
-                  src=""
-                  alt="imagen de la mesera"
-                  className="our-team__img"
-                />
-                <p className="our-team__txt">
-                  Ana es una de nuestras mejores y mas destacadas meseras por su
-                  actitud de servicio y eficiencia.
-                </p>
-              </div>
+              ))}
             </div>
           </section>
-          <section>
-            <h2 className="group--title">Testimonios</h2>
 
-            <div className="wrapper">
-              <div className="slider-testimonial">
-                <div className="testimonial-item">
-                  <div className="testimonial-client" align="center">
-                    <img
-                      src=""
-                      alt="imagen de un cliente"
-                      className="our-team__img"
-                    />
-                    <p className="client-name">Carlos Gomez</p>
-                  </div>
-                  <div className="testimonial-text" align="center">
-                    <p>
-                      Los platos que brindan son realmentes deliciosos y la
-                      atencion es de las mejores de la ciudad.
-                    </p>
-                  </div>
-                </div>
-                <div className="testimonial-item">
-                  <div className="testimonial-client" align="center">
-                    <img
-                      src=""
-                      alt="imagen de cliente 2"
-                      className="our-team__img"
-                    />
-                    <p className="client-name">Fernanda Castro</p>
-                  </div>
-                  <div className="testimonial-text" align="center">
-                    <p>
-                      Es un restaurante con un concepto muy original y con una
-                      comida realmente fantastica.
-                    </p>
-                  </div>
-                </div>
-                <div className="testimonial-item">
-                  <div className="testimonial-client" align="center">
-                    <img
-                      src=""
-                      alt="imagen de cliente 3"
-                      className="our-team__img"
-                    />
-                    <p className="client-name">Adriana Fernandez</p>
-                  </div>
-                  <div className="testimonial-text" align="center">
-                    <p>
-                      Es un lugar perfecto para compartir en familia ocasiones
-                      especiales. .
-                    </p>
-                  </div>
-                </div>
+
+
+
+ <section>
+        <h2 className="group--title">Testimonios</h2>
+        <div className="group our-team">
+            <div className="row">
+            {clientes.map((item) => (
+              <div className="col-lg-4">
+                <img src={item.imagen} alt="imagen de maria" className="our-team__img" />
+                <h2>{item.nombre}</h2>
+                <p>{item.Comentario}</p>
               </div>
+               ))}
             </div>
-          </section>
+          </div>
+      </section> 
         </main>
       </React.Fragment>
     );
   }
-}
 export default AboutUs;

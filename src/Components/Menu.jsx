@@ -1,16 +1,33 @@
 import React, {useEffect}  from "react";
+import axios from "axios";
 
 const Menu = (props) => {
-  const [productos, setProducto] = React.useState([]);
+const [data, setData] = React.useState([]);
+const [productos, setProducto] = React.useState([]);
 useEffect(() => {
     obtenerDatos();
   }, []);
+  
   //llamar al json
     const obtenerDatos = async () => {
     const dato = await fetch('https://dotnetrestaurante.herokuapp.com/api/plato');
     const informacion = await dato.json();
     setProducto(informacion);
   };
+
+  const agregarProductos = async (e) =>{
+    console.log(e.target.id);
+    let nuevoProducto = {
+      Cliente_id : 1,
+      Plato_id :  e.target.id
+    };
+    console.log(e.target.id);
+    await axios.post("https://dotnetrestaurante.herokuapp.com/api/pedido", nuevoProducto)
+    .then(response=>{
+      setData(data.concat(response.data));
+      obtenerDatos()
+    })
+}
     return (
       <React.Fragment>
       
@@ -36,7 +53,8 @@ useEffect(() => {
                     <h2 class="item-price ">$ {item.precio} </h2>
                   </div>
 
-                  <button
+                  <button onClick={agregarProductos}
+                    id={item.id}
                     type="button"
                     class="btn btn-primary"
                     data-bs-toggle="modal"

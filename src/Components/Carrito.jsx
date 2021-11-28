@@ -22,13 +22,15 @@ function showContent() {
 }
 const borrarPedido = (id) => {
 console.log(id)
-    fetch("https://dotnetrestaurante.herokuapp.com/api/pedido" + id, {
+    fetch("https://dotnetrestaurante.herokuapp.com/api/pedido/" + id, {
       method: "DELETE",
     })
       .then((response) => response.json())
       .then((data) => {
         console.log(data)
         alert("dato eliminado");
+        obtenerDatos();
+
       });
   }
 const agregarProductos = async (e) =>{
@@ -40,6 +42,7 @@ const agregarProductos = async (e) =>{
     await axios.post("https://dotnetrestaurante.herokuapp.com/api/pedido", nuevoProducto)
     .then(response=>{
       setData(data.concat(response.data));
+      obtenerDatos()
     })
 }
 

@@ -1,10 +1,26 @@
-import React from "react";
+import React, {useEffect} from "react";
 import "./Styles/AboutUs.css";
+import {
+    CarouselControl,
+    Carousel,
+    CarouselItem,
+    CarouselIndicators,
+} from 'reactstrap';
 
+const Index =(props)=> {
+const [servicios, setServicio] = React.useState([]);
+useEffect(() => {
+    obtenerDatos();
+  }, []);
+  
+  //llamar al json
+    const obtenerDatos = async () => {
+    const dato = await fetch('https://dotnetrestaurante.herokuapp.com/api/servicio');
+    const informacion = await dato.json();
+    setServicio(informacion);
+    obtenerDatos();
+  };
 
-
-class Index extends React.Component {
-  render() {
     return (
       <React.Fragment>
        		<main className="main">
@@ -17,29 +33,16 @@ class Index extends React.Component {
        			<section>
         			<h2 className="group--title">Nuestros eventos</h2>
         		<div className="card-group">
+             {servicios.map((item) => (
             <div className="card">
-              <img src="" className="card-img-top" alt="cena romantica" height="288" />
+              <img src={item.imagen} className="card-img-top" alt={item.nombre} height="288" />
               <div className="card-body">
-                <h5 className="card-title">Cena romantica</h5>
-                <p className="card-text">Ven con tu pareja a pasar una velada romantica acompañada de una mesa con champaña,velas y decoracion incluida</p>
+                <h5 className="card-title">{item.nombre}</h5>
+                <p className="card-text">{item.descripcion}</p>
             
               </div>
             </div>
-            <div className="card">
-              <img src="" className="card-img-top" alt="orquesta" height="288"/>
-              <div className="card-body">
-                <h5 className="card-title">Show musical</h5>
-                <p className="card-text">Vive con nosotros nuestro Jueves musical, una de las mejores experiencias, donde tenemos el honor de presentar una de las mejores orquestas musicales de la capital.</p>
-               
-              </div>
-            </div>
-            <div className="card">
-              <img src="" className="card-img-top" alt="img Cumpleaños" height="288" />
-              <div className="card-body">
-                <h5 className="card-title">Cumpleaños</h5>
-                <p className="card-text">Celebra con nosotros tus cumpleaños! donde te traeremos un pastel decorado y cantaremos tu cumpleaños acompañado de tus seres queridos.</p>
-              </div>
-            </div>
+              ))}
           </div>
        </section>
       
@@ -99,5 +102,5 @@ class Index extends React.Component {
       </React.Fragment>
     );
   }
-}
+
 export default Index;
