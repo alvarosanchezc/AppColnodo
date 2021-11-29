@@ -25,8 +25,6 @@ const [productos, setProducto] = React.useState([]);
     const dato = await fetch('https://dotnetrestaurante.herokuapp.com/api/platosEspeciales');
     const informacion = await dato.json();
     setProducto(informacion);
-
-    obtenerDatosPlatoEspecial();
   };
   useEffect(() => {
     obtenerDatosComentario();
@@ -36,7 +34,6 @@ const [productos, setProducto] = React.useState([]);
     const dato = await fetch('https://dotnetrestaurante.herokuapp.com/api/comentario');
     const informacion = await dato.json();
     setCliente(informacion);
-    obtenerDatosComentario();
   };
     return (
       <React.Fragment>

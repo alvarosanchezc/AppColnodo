@@ -19,7 +19,7 @@ class ComponenteLogin extends React.Component {
                 activeClassName="pageSwitcherItem-active"
                 className="pageSwitcherItem"
               >
-                Sign In
+                Ingresar
               </NavLink>
               <NavLink
                 exact
@@ -27,7 +27,7 @@ class ComponenteLogin extends React.Component {
                 activeClassName="pageSwitcherItem-active"
                 className="pageSwitcherItem"
               >
-                Sign Up
+                Registrarse
               </NavLink>
             </div>
 
@@ -47,7 +47,7 @@ class ComponenteLogin extends React.Component {
                 activeClassName="formTitleLink-active"
                 className="formTitleLink"
               >
-                 Registrarme
+                 Registrarse
               </NavLink>
             </div>
 

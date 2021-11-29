@@ -11,7 +11,8 @@ class SignUp extends Component {
       Nombre: "",
       Correo: "",
       NombreUsuario:"",
-      Contrasena: ""
+      Contrasena: "",
+      Imagen:"dkdkdk"
       };
 
     this.handleChange = this.handleChange.bind(this);
@@ -38,7 +39,7 @@ class SignUp extends Component {
 agregarCliente(state) {
   console.log("Este es el state: ");
     console.log(JSON.stringify(state));
-    fetch('http://localhost:5000/api/cliente/', {
+    fetch('https://dotnetrestaurante.herokuapp.com/api/cliente/', {
         method: 'POST',
         body: JSON.stringify(state),
         headers: {
@@ -49,15 +50,7 @@ agregarCliente(state) {
     .then(json => {
         alert("Te has registrado exitosamente");
     });
-/*
-    fetch("http://localhost:5000/api/cliente/", state, {
-      method: "POST",
-    })
-      .await((response) => response.json())
-      .then((data) => {
-        console.log(data)
-        alert("dato eliminado");
-      });*/
+
   }
 
   render() {
@@ -116,6 +109,15 @@ agregarCliente(state) {
               className="formFieldInput"
               placeholder="Introduce un nombre de usuario"
               name="NombreUsuario"
+              value={this.state.name}
+              onChange={this.handleChange}
+            />
+            <input
+              type="hidden"
+              id="name"
+              className="formFieldInput"
+              placeholder="Introduce un nombre de usuario"
+              name="Imagen"
               value={this.state.name}
               onChange={this.handleChange}
             />
