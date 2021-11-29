@@ -1,6 +1,5 @@
 import React, {useEffect}  from "react";
 import "./Styles/AboutUs.css";
-import "./Styles/AboutUs.css";
 
 
 const AboutUs= (props) => {

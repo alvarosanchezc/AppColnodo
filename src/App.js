@@ -7,8 +7,8 @@ import Services from "./Components/Services";
 import About from "./Components/AboutUs";
 import Carrito from "./Components/ComponentCarrito";
 import Login from "./Components/ComponenteLogin";
-import SignUp from "./Components/pages/SignUp";
 import Contacto from "./Components/Contacto";
+import Admin from "./Components/AdministrationComponent/AdminCarrito";
 import "bootstrap/dist/css/bootstrap.css";
 
 function App() {
@@ -23,7 +23,7 @@ function App() {
           <Route exact path="/menu" component={Menu} />
           <Route exact path="/nosotros" component={About} />
           <Route exact path="/servicios" component={Services} />
-          <Route exact path="/SignUp" component={SignUp} />
+          <Route exact path="/Admin" component={Admin} />
         </Switch>
       </Layout>
     </BrowserRouter>

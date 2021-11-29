@@ -2,6 +2,7 @@ import React, { useEffect } from 'react';
 import axios from "axios";
 const Carrito = (props) => {
   const [listaPedido, setListaPedido] = React.useState([]);
+  const [totalPedido, setTotalPedido] = React.useState([]);
 
 useEffect(() => {
     obtenerDatos();
@@ -12,7 +13,16 @@ useEffect(() => {
     const dato = await fetch('https://dotnetrestaurante.herokuapp.com/api/pedido');
     const informacion = await dato.json();
     setListaPedido(informacion);
-    showContent();
+    obtenerDatos();
+  };
+  useEffect(() => {
+    obtenerTotal();
+  }, []);
+  const obtenerTotal = async () => {
+    const dato = await fetch('https://dotnetrestaurante.herokuapp.com/api/totalPedido');
+    const informacion = await dato.json();
+    setTotalPedido(informacion);
+    obtenerTotal();
   };
 
 function showContent() {
@@ -76,11 +86,11 @@ return (
                 src={item.imagen}
                 alt="kk"
               /></th>
-              <th scope="row"><button id={item.id} class="btn btn-info btn-sm" onClick={agregarProductos}>
+              <th scope="row"><button id={item.id} class="btn btn-info" onClick={agregarProductos}>
                 +
             </button>
            
-              <th scope="row">  <button class="btn btn-danger btn-sm" onClick={() => borrarPedido(item.pedidoId)}>
+              <th scope="row">  <button class="btn btn-danger" onClick={() => borrarPedido(item.pedidoId)}>
                 -
             </button></th></th>
               <th scope="row">{item.subtotal}</th>
@@ -91,23 +101,27 @@ return (
             <th scope="row" colspan="2">
             Total productos
           </th>
-          <td></td>
+          {totalPedido.map((item=>
+          <td><b>{item.cantidad}</b></td>
+          ))}
           <td>
-            <button className="btn btn-danger btn-sm" id="vaciar-carrito">
+            <button className="btn btn-danger" id="vaciar-carrito">
               vaciar todo
             </button>
           </td>
-          <td>
-            <button className="btn btn-danger btn-sm" id="confirmar-pedido">
+          <th>
+            <button className="btn btn-danger" id="confirmar-pedido">
               Finalizar Pedido
             </button>
-          </td>
+          </th>
+          {totalPedido.map((item=>
           <td className="font-weight-bold">
-            $ <span>5000</span>
+            <b>$ <span>{item.total}</span></b>
           </td>
+))}
              <tr id="footer">
             <th scope="row" colspan="5">
-                Carrito vacío - comience a comprar!
+                
               </th>
             </tr>
 
@@ -116,7 +130,6 @@ return (
         </table>
 
         <template id="template-footer">
-          
         </template>  
 
       </React.Fragment>

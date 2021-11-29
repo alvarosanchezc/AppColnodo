@@ -1,122 +1,77 @@
 import React, { useEffect } from 'react';
-import axios from "axios";
+import "bootstrap/dist/css/bootstrap.css";
 
-const Carrito = (props) => {
-const [listaPedido, setListaPedido] = React.useState([]);
-useEffect(() => {
-    obtenerDatos();
-  }, []);
-  //llamar al json
-    const [data, setData] = React.useState([]);
-    const obtenerDatos = async () => {
-    const dato = await fetch('http://localhost:5000/api/pedido/');
-    const informacion = await dato.json();
-    setListaPedido(informacion);
-    showContent();
-  };
-
-function showContent() {
-  var temp = document.getElementsByTagName("template")[0];
-
-  document.body.appendChild(temp);
-}
-const borrarPedido = (id) => {
-console.log(id)
-    fetch("http://localhost:5000/api/pedido/" + id, {
-      method: "DELETE",
-    })
-      .then((response) => response.json())
-      .then((data) => {
-        console.log(data)
-        alert("dato eliminado");
-      });
-  }
-const agregarProductos = async (e) =>{
-    let nuevoProducto = {
-      Cliente_id : 1,
-      Plato_id :  e.target.id
-    };
-    console.log(e.target.id);
-    await axios.post("http://localhost:5000/api/pedido/", nuevoProducto)
-    .then(response=>{
-      setData(data.concat(response.data));
-    })
-}
+const Index = (props) => {
 
 return (
-<React.Fragment>
-<div className="container"> </div>
-          <div className="row" id="cards"></div>
-           <h1>
-            <center>Carrito</center>
-          </h1>
-        <table className="table">
-          <thead>
-            <tr>
-              <th scope="col">#</th>
-              <th scope="col">Item</th>
-              <th scope="col">Cantidad</th>
-              <th scope="col">Presentación</th>
-              <th scope="col">Acción</th>
-              <th scope="col">Total</th>
-            </tr>
-          </thead>
-          {listaPedido.map((item) => (
-          <tbody id="items">
-          
-              <tr>
-              <th scope="row">{item.id}</th>
-              <th scope="row">{item.nombre}</th>
-              <th scope="row">{item.cantidad}</th>
-              <th scope="row"><img
-                className="img-miniatura"
-                src={item.imagen}
-                alt="kk"
-              /></th>
-              <th scope="row"><button id={item.id} class="btn btn-info btn-sm" onClick={agregarProductos}>
-                +
-            </button>
-           
-              <th scope="row">  <button class="btn btn-danger btn-sm" onClick={() => borrarPedido(item.pedidoId)}>
-                -
-            </button></th></th>
-              <th scope="row">{item.subtotal}</th>
-              </tr> 
-              </tbody>
-               ))}
-           <tfoot>
-            <th scope="row" colspan="2">
-            Total productos
-          </th>
-          <td></td>
-          <td>
-            <button className="btn btn-danger btn-sm" id="vaciar-carrito">
-              vaciar todo
-            </button>
-          </td>
-          <td>
-            <button className="btn btn-danger btn-sm" id="confirmar-pedido">
-              Finalizar Pedido
-            </button>
-          </td>
-          <td className="font-weight-bold">
-            $ <span>5000</span>
-          </td>
-             <tr id="footer">
-            <th scope="row" colspan="5">
-                Carrito vacío - comience a comprar!
-              </th>
-            </tr>
-
-          </tfoot>
-
-        </table>
-
-        <template id="template-footer">
-          
-        </template>  
+    <React.Fragment>
+      <div className="nav-left-sidebar sidebar-dark">
+            <div className="slimScrollDiv" style="position: relative; overflow: hidden; width: auto; height: 100%;"><div className="menu-list" style="overflow: hidden; width: auto; height: 100%;">
+                <nav className="navbar navbar-expand-lg navbar-light">
+                    <a className="d-xl-none d-lg-none" href="#">Dashboard</a>
+                    <button className="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                        <span className="navbar-toggler-icon"></span>
+                    </button>
+                    <div className="collapse navbar-collapse" id="navbarNav">
+                        <ul className="navbar-nav flex-column">
+                            <li className="nav-divider">
+                                Menu
+                            </li>
+                            <li className="nav-item ">
+                                <a className="nav-link active" href="#" data-toggle="collapse" aria-expanded="true" data-target="#submenu-1" aria-controls="submenu-1"><i className="fa fa-fw fa-user-circle"></i>Dashboard <span className="badge badge-success">6</span></a>
+                                <div id="submenu-1" className="submenu collapse show" style="">
+                                    <ul className="nav flex-column">
+                                        <li className="nav-item">
+                                            <a className="nav-link" href="#" data-toggle="collapse" aria-expanded="false" data-target="#submenu-1-2" aria-controls="submenu-1-2">E-Commerce</a>
+                                            <div id="submenu-1-2" className="collapse submenu" style="">
+                                                <ul className="nav flex-column">
+                                                    <li className="nav-item">
+                                                        <a className="nav-link" href="#">E Commerce Dashboard</a>
+                                                    </li>
+                                                    <li className="nav-item">
+                                                        <a className="nav-link" href="#">Product List</a>
+                                                    </li>
+                                                    <li className="nav-item">
+                                                        <a className="nav-link" href="#">Product Single</a>
+                                                    </li>
+                                                    <li className="nav-item">
+                                                        <a className="nav-link" href="#">Product Checkout</a>
+                                                    </li>
+                                                </ul>
+                                            </div>
+                                        </li>
+                                        <li className="nav-item">
+                                            <a className="nav-link" href="#">Finance</a>
+                                        </li>
+                                        <li className="nav-item">
+                                            <a className="nav-link" href="#">Sales</a>
+                                        </li>
+                                        <li className="nav-item">
+                                            <a className="nav-link" href="#" data-toggle="collapse" aria-expanded="false" data-target="#submenu-1-1" aria-controls="submenu-1-1">Infulencer</a>
+                                            <div id="submenu-1-1" className="collapse submenu" style="">
+                                                <ul className="nav flex-column">
+                                                    <li className="nav-item">
+                                                        <a className="nav-link" href="#">Influencer</a>
+                                                    </li>
+                                                    <li className="nav-item">
+                                                        <a className="nav-link" href="#">Influencer Finder</a>
+                                                    </li>
+                                                    <li className="nav-item">
+                                                        <a className="nav-link" href="#">Influencer Profile</a>
+                                                    </li>
+                                                </ul>
+                                            </div>
+                                        </li>
+                                    </ul>
+                                </div>
+                            </li>
+                            </ul>
+                        </div>
+                </nav>
+            </div><div className="slimScrollBar" style="background: rgb(0, 0, 0); width: 7px; position: absolute; top: 0px; opacity: 0.4; display: none; border-radius: 7px; z-index: 99; right: 1px; height: 321px;"></div><div className="slimScrollRail" style="width: 7px; height: 100%; position: absolute; top: 0px; display: none; border-radius: 7px; background: rgb(51, 51, 51); opacity: 0.2; z-index: 90; right: 1px;"></div></div>
+        </div>
 
       </React.Fragment>
   );
   }
-export default Carrito;
+export default Index;

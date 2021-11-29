@@ -25,6 +25,7 @@ useEffect(() => {
     await axios.post("https://dotnetrestaurante.herokuapp.com/api/pedido", nuevoProducto)
     .then(response=>{
       setData(data.concat(response.data));
+      alert("producto agregado al carrito");
       obtenerDatos()
     })
 }
@@ -56,7 +57,7 @@ useEffect(() => {
                   <button onClick={agregarProductos}
                     id={item.id}
                     type="button"
-                    class="btn btn-primary"
+                    class="btn btn-danger"
                     data-bs-toggle="modal"
                     data-bs-target="#exampleModal0"
                   >

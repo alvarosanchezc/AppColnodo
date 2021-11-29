@@ -23,6 +23,8 @@ const Cards = (props) => {
     await axios.post("https://dotnetrestaurante.herokuapp.com/api/pedido", nuevoProducto)
     .then(response=>{
       setData(data.concat(response.data));
+      alert("producto agregado");
+      obtenerDatos();
     })
 }
 
@@ -45,7 +47,7 @@ return (
               <button
                 id={item.id}
                 onClick={agregarProductos}
-                class="btn btn-dark"
+                class="btn btn-danger"
                 data-bs-toggle="modal"
                 data-bs-target="#exampleModal1"
                 name="Plato_id"
